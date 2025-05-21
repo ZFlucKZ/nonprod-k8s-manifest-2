@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app
+  namespace: develop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs-app
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+    spec:
+      containers:
+        - name: nextjs-app
+          image: pajjaphon/nextjs-app:19fd1193e08d8bfc0f4e0e16e3b8833da3cae866
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9090
+          envFrom:
+            - configMapRef:
+                name: nextjs-app-config
+
+          # livenessProbe:
+          #   httpGet:
+          #     path: /api/v1/health
+          #     port: 5000
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 5
+          # readinessProbe:
+          #   httpGet:
+          #     path: /api/v1/health
+          #     port: 5000
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 20
+
+          resources:
+            requests:
+              cpu: '0.25'
+              memory: 128Mi
+            limits:
+              cpu: '0.5'
+              memory: 256Mi
