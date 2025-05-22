@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: 'pajjaphon/nextjs-app:17d2553f6af7324d13cb1c28ca028b2c8dca9ace'
+          image: 'pajjaphon/nextjs-app:00a8c179ae577349b06e8b504d818b837fb1e1e1'
           imagePullPolicy: Always
           ports:
             - containerPort: 9090
