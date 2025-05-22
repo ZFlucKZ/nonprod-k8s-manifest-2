@@ -15,14 +15,13 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: pajjaphon/nextjs-app:19fd1193e08d8bfc0f4e0e16e3b8833da3cae866
+          image: 'pajjaphon/nextjs-app:'
           imagePullPolicy: Always
           ports:
             - containerPort: 9090
           envFrom:
             - configMapRef:
                 name: nextjs-app-config
-
           # livenessProbe:
           #   httpGet:
           #     path: /api/v1/health
@@ -35,7 +34,6 @@ spec:
           #     port: 5000
           #   initialDelaySeconds: 5
           #   periodSeconds: 20
-
           resources:
             requests:
               cpu: '0.25'
