@@ -15,14 +15,13 @@ spec:
     spec:
       containers:
         - name: nestjs-api
-          image: pajjaphon/nestjs-api:develop
+          image: pajjaphon/nestjs-api:3c3a53fa7d36a3d30633225835ff099e75057431
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
           envFrom:
             - configMapRef:
                 name: nestjs-api-config
-
           # livenessProbe:
           #   httpGet:
           #     path: /api/v1/health
@@ -35,7 +34,6 @@ spec:
           #     port: 5000
           #   initialDelaySeconds: 5
           #   periodSeconds: 20
-
           resources:
             requests:
               cpu: '0.25'
